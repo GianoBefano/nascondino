@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Dependencies
 set(RAYLIB_VERSION 6.0)
-find_package(raylib ${RAYLIB_VERSION} QUIET) 
+find_package(raylib ${RAYLIB_VERSION} QUIET)
 if (NOT raylib_FOUND)
     include(FetchContent)
     FetchContent_Declare(
@@ -19,5 +19,10 @@ if (NOT raylib_FOUND)
     FetchContent_MakeAvailable(raylib)
 endif()
 
-add_executable(nascondino main.cpp)
+add_executable(nascondino main.cpp
+        map.cpp
+        map.h
+        draw.cpp
+        draw.h
+        constants.h)
 target_link_libraries(nascondino raylib)

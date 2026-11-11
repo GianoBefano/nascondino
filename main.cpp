@@ -1,20 +1,28 @@
 #include <raylib.h>
+#include "map.h"
+#include "draw.h"
+#include "constants.h"
+#include "draw.h"
+#include "constants.h"
 
 int main() {
 
-    // initialization
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 450;
+    const int monitor = GetCurrentMonitor();
+    const int screenWidth = GetMonitorWidth(monitor);
+    const int screenHeight = GetMonitorHeight(monitor);
 
     InitWindow(screenWidth, screenHeight, "Prima finestra di prova");
     SetTargetFPS(60);
+    Map map;
 
     // main loop
     while (!WindowShouldClose()) {   // detects window close button or ESC key
 
         BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Prima prova", 190, 200, 20, LIGHTGRAY);
+
+            ClearBackground(constants::backgroundColor);
+            draw_map(map);
+
         EndDrawing();
     }
 
